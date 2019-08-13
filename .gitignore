@@ -1,3 +1,7 @@
+# store
+server/store
+
+
 # Logs
 logs
 *.log
