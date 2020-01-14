@@ -88,6 +88,6 @@ export const GET_STORE_VIDEO_FILES = () => GLOB.sync( `${STORE_VIDEO}/**/*` )
 
 
 // # Client
-export const CLIENT_PUBLIC = resolve( __dirname, '../../../../tsdict/client/build' )
+export const CLIENT_PUBLIC = resolve( __dirname, '../../../client/build' )
 export const CLIENT_PUBLIC_INDEX = resolve( CLIENT_PUBLIC, 'index.html' )
 export const CLIENT_PUBLIC_APP_CACHE = resolve( CLIENT_PUBLIC, 'cache.appcache' )

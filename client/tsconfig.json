@@ -1,0 +1,34 @@
+{
+  "include": [
+    "src/**/*",
+    "../shared/__typings__/**/*",
+],
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*",
+      ],
+      "@shared/*": [
+        "../shared/*"
+      ]
+    },
+    "module": "esnext",
+		"target": "es5",
+		"jsx": "react",
+    "allowJs": true,
+    "outDir": "../../build/",
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "lib": ["dom", "es2016"],
+    "skipLibCheck": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "typeRoots": [
+      "node_modules/@types",
+      "src/__typings__/**/*"
+    ]
+  }
+}
