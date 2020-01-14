@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 import { TreeSelection, TypeTreeColumn } from '@/__typings__/tree'
-import Pronunciation from '@/components/Pronunciation'
 import TreePanel from '@/components/TreePanel/TreePanel'
 import { reduxStore } from '@/entry'
 import appApi from '@/services/modules/appApi'
@@ -33,7 +32,6 @@ export default class HomePage extends Component<Props> {
   render() {
     return (
       <StyledRoot visibleTreePanel={this.visibleTreePanel}>
-        123
         <div className="toolbarWrapper">
           <Toolbar />
         </div>
@@ -50,13 +48,11 @@ export default class HomePage extends Component<Props> {
           )}
           {this.isStandardReviewMode ? (
             <div className="standardReviewPanelWrapper">
-              {/* <Pronunciation /> */}
               <StandardReviewPanel />
             </div>
           ) : (
             this.visibleWordPanel && (
               <div className="wordPanelWrapper">
-                <Pronunciation />
                 <WordPanel />
               </div>
             )
