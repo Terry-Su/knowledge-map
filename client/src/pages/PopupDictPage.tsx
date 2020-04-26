@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
+import Pronunciation from '@/components/Pronunciation'
 import TreePanel from '@/components/TreePanel/TreePanel'
 import { Actions, Selectors, States } from '@/utils/decorators'
 
@@ -18,6 +19,7 @@ export default class PopupDictPage extends Component<Props> {
       <StyledRoot visibleTreePanel={this.visibleTreePanel}>
         <div className="wordPanelWrapper">
           <SearchBox />
+          <Pronunciation />
           <WordPanel />
         </div>
         <div className="bottomContainer">

@@ -1,0 +1,23 @@
+{
+  "files.exclude": {
+    "store/image": true,
+    "store/backupImage": true,
+    "store/backup": true,
+    "store/audio": true,
+    "store/video": true,
+    "store/dicts": true,
+    "store/phoneticSymbols": true,
+  },
+  
+  "eslint.autoFixOnSave": true,
+  "eslint.validate": [
+    { "language": "javascript", "autoFix": true },
+    { "language": "typescript", "autoFix": true },
+  ],
+
+  // "importSorter.generalConfiguration.sortOnBeforeSave": true,
+  "importSorter.importStringConfiguration.hasSemicolon": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+}

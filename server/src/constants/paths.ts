@@ -11,6 +11,7 @@ import getCustomConfig from '../utils/getCustomConfig'
 const { resolve, relative } = PATH
 
 export type Path = string
+
 const potentialStoreRoot = resolve( __dirname, '../../store' )
 
 const customConfig = getCustomConfig()
@@ -19,11 +20,13 @@ const { SYNC_STORE_PATH } = customConfig
 export const STORE_ROOT = SYNC_STORE_PATH != null ? SYNC_STORE_PATH : potentialStoreRoot
 const BACKUP = resolve( STORE_ROOT, 'backup' )
 
+export const STORE_GIF = resolve( STORE_ROOT, 'gif' )
 export const STORE_IMAGE = resolve( STORE_ROOT, 'image' )
 export const STORE_BACKUP_IMAGE = resolve( STORE_ROOT, 'backupImage' )
 export const STORE_AUDIO = resolve( STORE_ROOT, 'audio' )
 export const STORE_VIDEO = resolve( STORE_ROOT, 'video' )
 export const STORE_DICTS = resolve( STORE_ROOT, 'dicts' )
+export const STORE_DOWNLOAD_DICT_PAGES = resolve( STORE_ROOT, 'dictPages' )
 export const STORE_CURRENT_DATA_FILE = resolve( STORE_ROOT, 'clientData.json' )
 export const STORE_CURRENT_DATA_FILE_RENAME_IMAGE = resolve( STORE_ROOT, 'clientData-rename-image.json' )
 export const STORE_CURRENT_DATA_FILE_UPDATE_WORD_ID = resolve( STORE_ROOT, 'clientData-update-word-id.json' )
@@ -49,7 +52,7 @@ export const GET_BACKUP_CLIENT_DATA_UNIQUE_FILE = () => {
 }
 
 
-export const GET_STORE_IMAGE_UNIQUE_FILE_NAME = ( wordName: string ) => {
+const GET_IMAGE_UNIQUE_FILE_NAME = ( wordName: string, dir: string ) => {
   let num = 0
   let res = null
   while ( res === null ) {
@@ -59,7 +62,8 @@ export const GET_STORE_IMAGE_UNIQUE_FILE_NAME = ( wordName: string ) => {
       '.png',
       '.jpg',
       '.gif',
-    ].map( v => PATH.resolve( STORE_IMAGE, `${wordName}$${name}${v}` ) )
+      '.webp',
+    ].map( v => PATH.resolve( dir, `${wordName}$${name}${v}` ) )
     if ( possibleFiles.every( v => ! FS.pathExistsSync( v ) ) ) {
       res = `${wordName}$${name}`
     }
@@ -67,6 +71,10 @@ export const GET_STORE_IMAGE_UNIQUE_FILE_NAME = ( wordName: string ) => {
   }
   return res
 }
+
+export const GET_STORE_IMAGE_UNIQUE_FILE_NAME = ( wordName: string ) => GET_IMAGE_UNIQUE_FILE_NAME( wordName, STORE_IMAGE )
+
+export const GET_STORE_GIF_UNIQUE_FILE_NAME = ( wordName: string ) => GET_IMAGE_UNIQUE_FILE_NAME( wordName, STORE_GIF )
 
 export const GET_STORE_IMAGE_FILE_BY_NAME = name => resolve( STORE_IMAGE, name )
 
@@ -82,7 +90,8 @@ export const GET_STORE_AUDIO_FILES = () => GLOB.sync( `${STORE_AUDIO}/**/*` )
 
 export const GET_STORE_VIDEO_FILES = () => GLOB.sync( `${STORE_VIDEO}/**/*` )
 
-
+// # dict url
+export const PATH_DICT_URL_TXT = resolve( STORE_ROOT, 'dictUrl.txt' )
 
 
 
