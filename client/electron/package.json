@@ -4,7 +4,7 @@
     "start": "nodemon --watch main.js --exec electron ."
   },
   "devDependencies": {
-    "electron": "^3.0.7",
+    "electron": "^9.1.0",
     "nodemon": "^1.19.1"
   }
 }
